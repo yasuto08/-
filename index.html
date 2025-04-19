@@ -5,13 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>もみ徳 スタッフ一覧</title>
   <style>
+    :root {
+      --bg-gradient-light: linear-gradient(to bottom right, #f0f2f5, #e6ecf3);
+      --bg-gradient-dark: linear-gradient(to bottom right, #1f1f1f, #3a3a3a);
+      --text-color-light: #333;
+      --text-color-dark: #f0f0f0;
+      --card-bg-light: #fff;
+      --card-bg-dark: #2b2b2b;
+      --card-border-light: #ddd;
+      --card-border-dark: #555;
+    }
+
+    body[data-theme='dark'] {
+      background: var(--bg-gradient-dark);
+      color: var(--text-color-dark);
+    }
+    body[data-theme='light'] {
+      background: var(--bg-gradient-light);
+      color: var(--text-color-light);
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       padding: 1.5em;
       margin: 0;
-      background: linear-gradient(to bottom, #f0f2f5, #ffffff);
-      color: #333;
+      transition: background 0.5s, color 0.5s;
     }
+
     h1 {
       text-align: center;
       font-size: 2rem;
@@ -20,23 +40,43 @@
     .subheading {
       text-align: center;
       font-size: 1rem;
-      color: #666;
       margin-bottom: 2em;
+    }
+    .theme-toggle {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1em;
+    }
+    .theme-toggle button {
+      padding: 0.5em 1em;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #444;
+      color: #fff;
+      cursor: pointer;
+      margin: 0 0.5em;
     }
     .staff-grid {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
       gap: 2em;
     }
     .staff-card {
-      background: #fff;
+      background: var(--card-bg-light);
       border-radius: 20px;
       padding: 2em 1.5em;
-      width: 180px;
+      width: 100%;
+      max-width: 360px;
       text-align: center;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid var(--card-border-light);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.5s, border 0.5s;
+    }
+    body[data-theme='dark'] .staff-card {
+      background: var(--card-bg-dark);
+      border: 1px solid var(--card-border-dark);
     }
     .staff-card:hover {
       transform: translateY(-6px);
@@ -47,69 +87,11 @@
       height: 100px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #ddd;
+      border: 3px solid var(--card-border-light);
       margin-bottom: 1em;
+    }
+    body[data-theme='dark'] .staff-card img {
+      border-color: var(--card-border-dark);
     }
     .staff-name {
       font-weight: bold;
-      font-size: 1.15rem;
-      color: #2c3e50;
-    }
-    .staff-card a {
-      text-decoration: none;
-      color: inherit;
-    }
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5em;
-      }
-      .subheading {
-        font-size: 0.95rem;
-        margin-bottom: 1.5em;
-      }
-      .staff-card {
-        width: 80%;
-        padding: 1.5em 1em;
-      }
-      .staff-card img {
-        width: 80px;
-        height: 80px;
-      }
-      .staff-name {
-        font-size: 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1>もみ徳｜スタッフ一覧</h1>
-  <p class="subheading">あなたにぴったりのスタッフを見つけてください。<br>迷ったときは、雰囲気や出勤店舗などを参考にどうぞ。</p>
-  <div class="staff-grid">
-    <div class="staff-card">
-      <a href="taro.html" target="_blank">
-        <img src="https://raw.githubusercontent.com/yasuto08/-/main/%E3%81%9F%E3%82%8D%E3%81%86.png" alt="たろう">
-        <div class="staff-name">たろう</div>
-      </a>
-    </div>
-    <div class="staff-card">
-      <a href="yui.html" target="_blank">
-        <img src="https://raw.githubusercontent.com/yasuto08/-/main/%E3%82%86%E3%81%84.png" alt="ゆい">
-        <div class="staff-name">ゆい</div>
-      </a>
-    </div>
-    <div class="staff-card">
-      <a href="makoto.html" target="_blank">
-        <img src="https://raw.githubusercontent.com/yasuto08/-/main/%E3%81%BE%E3%81%93%E3%81%A8.png" alt="まこと">
-        <div class="staff-name">まこと</div>
-      </a>
-    </div>
-    <div class="staff-card">
-      <a href="akane.html" target="_blank">
-        <img src="https://raw.githubusercontent.com/yasuto08/-/main/%E3%81%82%E3%81%8B%E3%81%AD.png" alt="あかね">
-        <div class="staff-name">あかね</div>
-      </a>
-    </div>
-  </div>
-</body>
-</html>
